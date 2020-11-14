@@ -4,6 +4,7 @@
 
 #ifndef MY_PROJECT_NAME_IFILE_H
 #define MY_PROJECT_NAME_IFILE_H
+#include "Person.h"
 
 class Ifile{
 public:
