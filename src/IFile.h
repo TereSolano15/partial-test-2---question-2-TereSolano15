@@ -8,6 +8,7 @@
 
 class Ifile{
 public:
-    virtual void save(vector<Person> persons) = 0;
+    virtual void guardar(std::string fileName) = 0;
+    virtual void leer(std::string filename) = 0;
 };
 #endif //MY_PROJECT_NAME_IFILE_H

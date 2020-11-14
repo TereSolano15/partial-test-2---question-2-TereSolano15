@@ -4,22 +4,10 @@
 
 #include "Producto.h"
 
-Producto::Producto(const string &nombre, float version, const string &releaseDate, bool demo,
-                   const vector<Person> &personas) : nombre(nombre), version(version), releaseDate(releaseDate),
-                                                     demo(demo), personas(personas) {}
-
 Producto::Producto() {}
 
 Producto::~Producto() {
 
-}
-
-const string &Producto::getNombre() const {
-    return nombre;
-}
-
-void Producto::setNombre(const string &nombre) {
-    Producto::nombre = nombre;
 }
 
 float Producto::getVersion() const {
@@ -53,3 +41,15 @@ const vector<Person> &Producto::getPersonas() const {
 void Producto::setPersonas(const vector<Person> &personas) {
     Producto::personas = personas;
 }
+
+const string &Producto::getProducto() const {
+    return producto;
+}
+
+void Producto::setProducto(const string &producto) {
+    Producto::producto = producto;
+}
+
+Producto::Producto(const string &producto, float version, const string &releaseDate, bool demo,
+                   const vector<Person> &personas) : producto(producto), version(version), releaseDate(releaseDate),
+                                                     demo(demo), personas(personas) {}

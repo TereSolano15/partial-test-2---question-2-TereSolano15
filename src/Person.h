@@ -6,6 +6,7 @@
 #define MY_PROJECT_NAME_PERSON_H
 #include <iostream>
 #include <vector>
+#include "Email.h"
 #include "Phone.h"
 #include "EmergencyContacts.h"
 using namespace std;
@@ -15,7 +16,7 @@ private:
     int id;
     string name;
     vector <Phone> phones;
-    vector <string> emails;
+    vector <Email> emails;
     string dateOfBirth;
     bool registered;
     vector<EmergencyContacts> emergencyContacts;

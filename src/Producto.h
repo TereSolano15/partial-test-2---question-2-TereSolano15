@@ -8,19 +8,19 @@
 
 class Producto {
 private:
-    string nombre;
+    string producto;
     float version;
     string releaseDate;
     bool demo;
     vector<Person> personas;
 
 public:
+    Producto(const string &producto, float version, const string &releaseDate, bool demo,
+             const vector<Person> &personas);
 
-    Producto(const string &nombre, float version, const string &releaseDate, bool demo, const vector<Person> &personas);
+    const string &getProducto() const;
 
-    const string &getNombre() const;
-
-    void setNombre(const string &nombre);
+    void setProducto(const string &producto);
 
     float getVersion() const;
 
