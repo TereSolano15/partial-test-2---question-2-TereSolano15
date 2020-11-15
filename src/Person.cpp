@@ -16,12 +16,23 @@ Person::Person(int id, const string &name, const vector<Phone> &phones, const ve
                                                                                                                  emergencyContacts(
                                                                                                                          emergencyContacts) {
 }
+
 Person::Person() {}
 
 Person::~Person() {
 
 }
+Person::Person(istream& input) {
+   string temporal = to_string(this->id);
+    string temporal2 = to_string(this->registered);
 
+    getline(input,temporal,',');
+    getline(input, this->name, ',');
+    getline(input,this->dateOfBirth,',');
+    getline(input,temporal2,',');
+
+    input.ignore();
+}
 int Person::getId() const {
     return id;
 }

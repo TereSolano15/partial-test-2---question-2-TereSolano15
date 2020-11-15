@@ -5,12 +5,15 @@
 #ifndef MY_PROJECT_NAME_EMAIL_H
 #define MY_PROJECT_NAME_EMAIL_H
 #include <iostream>
+#include <string>
 using namespace std;
 class Email {
 private:
     string email;
 public:
     Email();
+
+    Email(istream& input);
 
     virtual ~Email();
 

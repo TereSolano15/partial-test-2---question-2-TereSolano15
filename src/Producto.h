@@ -18,6 +18,7 @@ public:
     Producto(const string &producto, float version, const string &releaseDate, bool demo,
              const vector<Person> &personas);
 
+    Producto(istream& input);
 
     const string &getProducto() const;
 

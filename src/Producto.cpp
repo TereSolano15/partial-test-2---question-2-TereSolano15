@@ -9,7 +9,16 @@ Producto::Producto() {}
 Producto::~Producto() {
 
 }
+Producto::Producto(istream& input) {
 
+    getline(input, this->producto, ',');
+    getline(input, this->version, ',');
+    getline(input, this->releaseDate, ',');
+    getline(input, this->demo, ',');
+    input >> this->secuencia;
+    input.ignore();
+
+}
 float Producto::getVersion() const {
     return version;
 }

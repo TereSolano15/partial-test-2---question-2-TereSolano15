@@ -47,11 +47,12 @@ void to_json(json &_json, const Producto &_producto) {
     _json["person"] = jPersonList;
 }
 
-void from_json(const json &_json, Person &_person) {
+void from_json(const json &_json, Producto &_producto) {
 
     vector<EmergencyContacts> contactList;
     vector<Phone> phoneList;
     vector<Email> emailList;
+    vector<Person> personList;
     json personData = _json["person"];
 
     // this method is necessary to deserialize tha information from the vector
@@ -73,13 +74,24 @@ void from_json(const json &_json, Person &_person) {
         emails.setEmail(data.at("email").get<string>());
         emailList.push_back(emails);
     }
-    _person.setId(_json.at("id").get<int>());
-    _person.setName(_json.at("name").get<string>());
-    _person.setDateOfBirth(_json.at("dateOfBirth").get<string>());
-    _person.setRegistered(_json.at("registered").get<bool>());
-    _person.setEmails(emailList);
-    _person.setPhones(phoneList);
-    _person.setEmergencyContacts(contactList);
+    for (auto & data : personData){
+        Person persons;
+
+        persons.setId(_json.at("id").get<int>());
+        persons.setName(_json.at("name").get<string>());
+        persons.setPhones(phoneList);
+        persons.setEmails(emailList);
+        persons.setDateOfBirth(_json.at("dateOfBirth").get<string>());
+        persons.setRegistered(_json.at("registered").get<bool>());
+        persons.setEmergencyContacts(contactList);
+        personList.push_back(persons);
+
+    }
+    _producto.setProducto(_json.at("product").get<string>());
+    _producto.setVersion(_json.at("version").get<float>());
+    _producto.setReleaseDate(_json.at("releaseDate").get<string>());
+    _producto.setDemo(_json.at("demo").get<bool>());
+    _producto.setPersonas(personList);
 }
 
 void FileJson::saveInJson(const string &jsonData, const string &filename) {
@@ -131,7 +143,7 @@ string FileJson::serialize(const vector<Producto> &_productoLista) {
 
 vector<Producto> FileJson::deserialize(const string &_data) {
     json jsonData = json::parse(_data);
-    vector<Producto> produtoList = jsonData;
+    vector<Producto> productoList = jsonData;
 
     return productoList;
 }

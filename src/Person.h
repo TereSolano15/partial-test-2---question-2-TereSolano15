@@ -8,6 +8,7 @@
 #include <vector>
 #include "Email.h"
 #include "Phone.h"
+#include <string>
 #include "EmergencyContacts.h"
 using namespace std;
 
@@ -27,6 +28,9 @@ public:
     int getId() const;
 
     void setId(int id);
+
+    Person(istream& input);
+
 
     const string &getName() const;
 

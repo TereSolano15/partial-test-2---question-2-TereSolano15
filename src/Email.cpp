@@ -12,6 +12,12 @@ Email::~Email() {
 
 Email::Email() {}
 
+Email::Email(istream& input) {
+
+    getline(input, this->email, ',');
+
+    input.ignore();
+}
 const string &Email::getEmail() const {
     return email;
 }
