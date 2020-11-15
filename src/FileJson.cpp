@@ -55,7 +55,6 @@ void from_json(const json &_json, Producto &_producto) {
     vector<Person> personList;
     json personData = _json["person"];
 
-    // this method is necessary to deserialize tha information from the vector
     for (auto & data : personData) {
         EmergencyContacts contacts;
         contacts.setName(data.at("name").get<string>());

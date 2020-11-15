@@ -12,7 +12,7 @@ class FileBinary : Ifile{
 public:
     virtual ~FileBinary();
     string leer(string filename) override;
-    void guardar(string filename) override;
+    void guardar(string filename);
 };
 
 
