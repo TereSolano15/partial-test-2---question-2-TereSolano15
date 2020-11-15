@@ -49,8 +49,6 @@ void to_json(json &_json, const Producto &_producto) {
 
 void from_json(const json &_json, Person &_person) {
 
-   // _person.setCorreo(_json.at("Correo").get<string>());
-
     vector<EmergencyContacts> contactList;
     vector<Phone> phoneList;
     vector<Email> emailList;
@@ -112,26 +110,30 @@ string FileJson::readInJson(const string &filename) {
 
 void FileJson::leer(string filename) {
 
-    ArrayManager* manager = ArrayManager::getInstance();
-    string infoJsonFile = readInJson(filename);
-    vector<Person> vectorPerson;
-    vectorPerson = FileJson::deserialize(infoJsonFile);
-    manager->setPacientes(vectorPerson);
-    manager->addEnfermedadArray();
-    manager->ordenarEnfermedades();
+    try {
+        std::ifstream file (filename);
+        file.exceptions ( std::ifstream::failbit | std::ifstream::badbit );
+
+        stringstream buffer;
+        buffer << file.rdbuf();
+        std::string fileContent(buffer.str());
+    }
+    catch (ifstream::failure e) {
+        throw runtime_error("Exception opening/reading/closing file");
+    }
 }
 
-string FileJson::serialize(const vector<Paciente> &_pacienteLista) {
-    json jsonData(_pacienteLista);
+string FileJson::serialize(const vector<Producto> &_productoLista) {
+    json jsonData(_productoLista);
     string jsonArray = jsonData.dump();
     return jsonArray;
 }
 
-vector<Paciente> FileJson::deserialize(const string &_data) {
+vector<Producto> FileJson::deserialize(const string &_data) {
     json jsonData = json::parse(_data);
-    vector<Paciente> personList = jsonData;
+    vector<Producto> produtoList = jsonData;
 
-    return personList;
+    return productoList;
 }
 
 void FileJson::guardar(std::string fileName) {
