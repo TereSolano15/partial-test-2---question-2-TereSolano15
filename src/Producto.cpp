@@ -10,12 +10,11 @@ Producto::~Producto() {
 
 }
 Producto::Producto(istream& input) {
-
+    string temporal = to_string(this->version);
     getline(input, this->producto, ',');
-    getline(input, this->version, ',');
+    getline(input, temporal, ',');
     getline(input, this->releaseDate, ',');
-    getline(input, this->demo, ',');
-    input >> this->secuencia;
+    input >> this->demo;
     input.ignore();
 
 }
@@ -50,7 +49,12 @@ const vector<Person> &Producto::getPersonas() const {
 void Producto::setPersonas(const vector<Person> &personas) {
     Producto::personas = personas;
 }
-
+void Producto::guarda(ostream &out) {
+    out<<this->producto<<",";
+    out<<this->version<<",";
+    out<<this->releaseDate<<",";
+    out<<this->demo;
+}
 const string &Producto::getProducto() const {
     return producto;
 }

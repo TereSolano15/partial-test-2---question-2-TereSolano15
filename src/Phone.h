@@ -25,6 +25,8 @@ public:
     const string &getMobile() const;
 
     void setMobile(const string &mobile);
+
+    void guarda(ostream & out);
 };
 
 

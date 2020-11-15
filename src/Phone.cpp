@@ -24,6 +24,11 @@ void Phone::setMobile(const string &mobile) {
     Phone::mobile = mobile;
 }
 
+void Phone::guarda(ostream &out) {
+    out<<this->home<<",";
+    out<<this->mobile;
+}
+
 Phone::~Phone() {
 
 }

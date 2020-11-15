@@ -18,6 +18,11 @@ Email::Email(istream& input) {
 
     input.ignore();
 }
+
+void Email::guardar(ostream &out) {
+    out<<this->email;
+}
+
 const string &Email::getEmail() const {
     return email;
 }

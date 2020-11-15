@@ -36,6 +36,8 @@ public:
 
     void setDemo(bool demo);
 
+    void guarda(ostream &out);
+
     const vector<Person> &getPersonas() const;
 
     void setPersonas(const vector<Person> &personas);

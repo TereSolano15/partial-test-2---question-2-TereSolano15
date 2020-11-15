@@ -31,6 +31,7 @@ public:
 
     Person(istream& input);
 
+    void guarda(ostream &out);
 
     const string &getName() const;
 
@@ -54,7 +55,7 @@ public:
 
     Person();
 
-    const vector<string> &getEmails() const;
+    const vector<Email> &getEmails() const;
 
     void setEmails(const vector<Email> &emails);
 

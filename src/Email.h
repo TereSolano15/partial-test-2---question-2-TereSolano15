@@ -19,6 +19,8 @@ public:
 
     Email(const string &email);
 
+    void guardar(ostream & out);
+
     const string &getEmail() const;
 
     void setEmail(const string &email);

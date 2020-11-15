@@ -36,7 +36,7 @@ void to_json(json &_json, const Producto &_producto) {
         jPersons["dateOfBirth"] = personProduct.getDateOfBirth();
         jPersons["registered"] = personProduct.isRegistered();
         jPersons["phones"] = jPhoneList;
-        jPersons["email"] = personProduct.getEmails();
+        jPersons["email"] = jMailList;
         jPersons["emergencyContacts"] = jContactList;
         jPersonList.push_back(jPersons);
     }

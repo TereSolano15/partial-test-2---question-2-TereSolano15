@@ -88,3 +88,9 @@ void Person::setEmails(const vector<Email> &emails) {
 const vector<Email> &Person::getEmails() const {
     return emails;
 }
+void Person::guarda(ostream &out) {
+    out<<this->id<<",";
+    out<<this->name<<",";
+    out<<this->dateOfBirth<<",";
+    out<<this->registered;
+}
