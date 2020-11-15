@@ -21,7 +21,7 @@ private:
     bool registered;
     vector<EmergencyContacts> emergencyContacts;
 public:
-    Person(int id, const string &name, const vector<Phone> &phones, const vector<string> &emails,
+    Person(int id, const string &name, const vector<Phone> &phones, const vector<Email> &emails,
            const string &dateOfBirth, bool registered, const vector<EmergencyContacts> &emergencyContacts);
 
     int getId() const;
@@ -36,10 +36,6 @@ public:
 
     void setPhones(const vector<Phone> &phones);
 
-    const vector<string> &getEmails() const;
-
-    void setEmails(const vector<string> &emails);
-
     const string &getDateOfBirth() const;
 
     void setDateOfBirth(const string &dateOfBirth);
@@ -53,6 +49,10 @@ public:
     void setEmergencyContacts(const vector<EmergencyContacts> &emergencyContacts);
 
     Person();
+
+    const vector<string> &getEmails() const;
+
+    void setEmails(const vector<Email> &emails);
 
     virtual ~Person();
 };

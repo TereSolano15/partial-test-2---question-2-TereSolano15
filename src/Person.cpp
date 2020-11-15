@@ -4,7 +4,7 @@
 
 #include "Person.h"
 
-Person::Person(int id, const string &name, const vector<Phone> &phones, const vector<string> &emails,
+Person::Person(int id, const string &name, const vector<Phone> &phones, const vector<Email> &emails,
                const string &dateOfBirth, bool registered, const vector<EmergencyContacts> &emergencyContacts) : id(id),
                                                                                                                  name(name),
                                                                                                                  phones(phones),
@@ -14,8 +14,8 @@ Person::Person(int id, const string &name, const vector<Phone> &phones, const ve
                                                                                                                  registered(
                                                                                                                          registered),
                                                                                                                  emergencyContacts(
-                                                                                                                         emergencyContacts) {}
-
+                                                                                                                         emergencyContacts) {
+}
 Person::Person() {}
 
 Person::~Person() {
@@ -46,14 +46,6 @@ void Person::setPhones(const vector<Phone> &phones) {
     Person::phones = phones;
 }
 
-const vector<string> &Person::getEmails() const {
-    return emails;
-}
-
-void Person::setEmails(const vector<string> &emails) {
-    Person::emails = emails;
-}
-
 const string &Person::getDateOfBirth() const {
     return dateOfBirth;
 }
@@ -76,4 +68,12 @@ const vector<EmergencyContacts> &Person::getEmergencyContacts() const {
 
 void Person::setEmergencyContacts(const vector<EmergencyContacts> &emergencyContacts) {
     Person::emergencyContacts = emergencyContacts;
+}
+
+void Person::setEmails(const vector<Email> &emails) {
+    Person::emails = emails;
+}
+
+const vector<Email> &Person::getEmails() const {
+    return emails;
 }

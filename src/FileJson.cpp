@@ -11,6 +11,8 @@ void to_json(json &_json, const Producto &_producto) {
     auto jPhoneList =  json::array();
     json jContacts;
     auto jContactList = json::array();
+    json jMails;
+    auto jMailList = json::array();
 
     for(const EmergencyContacts& personContacts : _producto.getPersonas().data()->getEmergencyContacts()){
         jContacts["name"] = personContacts.getName();
@@ -24,7 +26,10 @@ void to_json(json &_json, const Producto &_producto) {
         jPhones["mobile"] = personPhones.getMobile();
         jPhoneList.push_back(jPhones);
     }
-
+    for(const Email& personEmail : _producto.getPersonas().data()->getEmails()){
+        jMails["mail"] = personEmail.getEmail();
+        jMailList.push_back(jMails);
+    }
     for(const Person& personProduct : _producto.getPersonas()) {
         jPersons["id"] = personProduct.getId();
         jPersons["name"] = personProduct.getName();
@@ -48,6 +53,7 @@ void from_json(const json &_json, Person &_person) {
 
     vector<EmergencyContacts> contactList;
     vector<Phone> phoneList;
+    vector<Email> emailList;
     json personData = _json["person"];
 
     // this method is necessary to deserialize tha information from the vector
@@ -65,13 +71,15 @@ void from_json(const json &_json, Person &_person) {
         phoneList.push_back(phones);
     }
     for (auto & data : personData){
-
+        Email emails;
+        emails.setEmail(data.at("email").get<string>());
+        emailList.push_back(emails);
     }
     _person.setId(_json.at("id").get<int>());
     _person.setName(_json.at("name").get<string>());
     _person.setDateOfBirth(_json.at("dateOfBirth").get<string>());
     _person.setRegistered(_json.at("registered").get<bool>());
-//    _person.setEmails(_json.at("email").get<string>());
+    _person.setEmails(emailList);
     _person.setPhones(phoneList);
     _person.setEmergencyContacts(contactList);
 }
