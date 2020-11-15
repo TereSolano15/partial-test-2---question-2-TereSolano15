@@ -32,18 +32,25 @@ void FileBinary::guardar(string filename) {
     }
 }
 
-void FileBinary::leer(string filename) {
-    vector<Producto*> productList;
+string FileBinary::leer(string filename) {
+    std::string txtContent;
+
     try {
-        ifstream in(filename, ios::in);
-        if (in.good()) {
+        std::ifstream file (filename);
+        file.exceptions ( std::ifstream::failbit | std::ifstream::badbit );
 
-            while (!in.eof() && in.good()) {
+        stringstream buffer;
+        buffer << file.rdbuf();
+        std::string fileContent(buffer.str());
+        txtContent = fileContent;
+    }
+    catch (std::ifstream::failure e) {
+        throw std::runtime_error("Exception opening/reading/closing file");
+    }
 
-                productList.push_back(new Producto(in));
+    return txtContent;
+}
 
-            }
-            in.close();
-        }
-    }catch (std::ifstream::failure e) {throw runtime_error("file didnt open, exception opening file");}
+FileBinary::~FileBinary() {
+
 }

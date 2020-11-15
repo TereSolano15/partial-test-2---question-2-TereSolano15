@@ -100,7 +100,7 @@ void FileJson::saveInJson(const string &jsonData, const string &filename) {
     file.close();
 }
 
-string FileJson::readInJson(const string &filename) {
+string FileJson::leer(string filename) {
     std::string txtContent;
 
     try {
@@ -112,27 +112,11 @@ string FileJson::readInJson(const string &filename) {
         std::string fileContent(buffer.str());
         txtContent = fileContent;
     }
-    catch (std::ifstream::failure& e) {
-        throw exception();
+    catch (std::ifstream::failure e) {
+        throw std::runtime_error("Exception opening/reading/closing file");
     }
 
     return txtContent;
-}
-
-
-void FileJson::leer(string filename) {
-
-    try {
-        std::ifstream file (filename);
-        file.exceptions ( std::ifstream::failbit | std::ifstream::badbit );
-
-        stringstream buffer;
-        buffer << file.rdbuf();
-        std::string fileContent(buffer.str());
-    }
-    catch (ifstream::failure e) {
-        throw runtime_error("Exception opening/reading/closing file");
-    }
 }
 
 string FileJson::serialize(const vector<Producto> &_productoLista) {

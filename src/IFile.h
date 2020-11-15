@@ -9,6 +9,6 @@
 class Ifile{
 public:
     virtual void guardar(std::string fileName) = 0;
-    virtual void leer(std::string filename) = 0;
+    virtual string leer(std::string filename) = 0;
 };
 #endif //MY_PROJECT_NAME_IFILE_H

@@ -16,11 +16,10 @@ using namespace std;
 using json = nlohmann::json;
 
 class FileJson: public Ifile{
-
+public:
     void guardar(std::string fileName) override;
     static void saveInJson(const string& jsonData, const std::string &filename);
-    static string readInJson(const std::string &filename);
-    void leer(std::string filename) override;
+    string leer(string filename) override;
     static string serialize(const vector<Producto>& _productoList);
     static vector<Producto> deserialize(const string& _data);
 
